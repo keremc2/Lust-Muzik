@@ -1,1 +1,31 @@
-const _0x1f258e=_0x4c8a;function _0x18d2(){const _0x2e41a4=['message','catch','470624kyIMyh','stringify','Yeni\x20İletişim\x20Formu\x20Mesajı:\x0a**Ad:**\x20','137010Anqeci','142xekhDz','10866ekXwnK','responseMessage','value','1351632JbwGTV','55636eXCaTz','542857wjbuii','contactForm','10bMvSKx','738pJVVXu','Mesaj\x20gönderilirken\x20bir\x20hata\x20oluştu.','\x0a**Mesaj:**\x20','innerText','email','name','\x0a**E-posta:**\x20','preventDefault','getElementById','then','154621ydWFlt','addEventListener'];_0x18d2=function(){return _0x2e41a4;};return _0x18d2();}function _0x4c8a(_0x194238,_0x1b653e){const _0x18d29d=_0x18d2();return _0x4c8a=function(_0x4c8a07,_0x3b6cf5){_0x4c8a07=_0x4c8a07-0x17a;let _0x4e72b2=_0x18d29d[_0x4c8a07];return _0x4e72b2;},_0x4c8a(_0x194238,_0x1b653e);}(function(_0x160f01,_0x3759ed){const _0x4283f8=_0x4c8a,_0x405e52=_0x160f01();while(!![]){try{const _0x24311e=-parseInt(_0x4283f8(0x18e))/0x1+parseInt(_0x4283f8(0x17b))/0x2*(-parseInt(_0x4283f8(0x17c))/0x3)+-parseInt(_0x4283f8(0x180))/0x4+parseInt(_0x4283f8(0x183))/0x5*(-parseInt(_0x4283f8(0x17f))/0x6)+-parseInt(_0x4283f8(0x181))/0x7+parseInt(_0x4283f8(0x192))/0x8+parseInt(_0x4283f8(0x184))/0x9*(parseInt(_0x4283f8(0x17a))/0xa);if(_0x24311e===_0x3759ed)break;else _0x405e52['push'](_0x405e52['shift']());}catch(_0x575958){_0x405e52['push'](_0x405e52['shift']());}}}(_0x18d2,0x37cab),document[_0x1f258e(0x18c)](_0x1f258e(0x182))[_0x1f258e(0x18f)]('submit',function(_0x352342){const _0x2319b8=_0x1f258e;_0x352342[_0x2319b8(0x18b)]();const _0x33a4e2=document[_0x2319b8(0x18c)](_0x2319b8(0x189))[_0x2319b8(0x17e)],_0x5c8cd7=document[_0x2319b8(0x18c)](_0x2319b8(0x188))[_0x2319b8(0x17e)],_0x348ac7=document[_0x2319b8(0x18c)](_0x2319b8(0x190))[_0x2319b8(0x17e)],_0x54f711='https://discordapp.com/api/webhooks/1290749888643993694/Put47byhHvtda2RI2UA_vBrT_wb5bb_xwlY_6bw7nxLV-qFLU2NZj5NhcAn56E9qNLp9',_0x545bff={'content':_0x2319b8(0x194)+_0x33a4e2+_0x2319b8(0x18a)+_0x5c8cd7+_0x2319b8(0x186)+_0x348ac7};fetch(_0x54f711,{'method':'POST','headers':{'Content-Type':'application/json'},'body':JSON[_0x2319b8(0x193)](_0x545bff)})[_0x2319b8(0x18d)](_0xa58f7f=>{const _0x2b92e5=_0x2319b8;if(_0xa58f7f['ok'])document['getElementById'](_0x2b92e5(0x17d))[_0x2b92e5(0x187)]='Mesajınız\x20başarıyla\x20gönderildi!';else throw new Error(_0x2b92e5(0x185));})[_0x2319b8(0x191)](_0x44a5de=>{const _0x13adb4=_0x2319b8;document[_0x13adb4(0x18c)](_0x13adb4(0x17d))['innerText']=_0x44a5de['message'];});}));
+document.getElementById('contactForm').addEventListener('submit', function(event) {
+    event.preventDefault(); // Formun varsayılan gönderimini durdur
+
+    const name = document.getElementById('name').value;
+    const email = document.getElementById('email').value;
+    const message = document.getElementById('message').value;
+
+    const webhookURL = 'https://discordapp.com/api/webhooks/1290749888643993694/Put47byhHvtda2RI2UA_vBrT_wb5bb_xwlY_6bw7nxLV-qFLU2NZj5NhcAn56E9qNLp9'; // Discord webhook URL'nizi buraya ekleyin
+
+    const payload = {
+        content: `Yeni İletişim Formu Mesajı:\n**Ad:** ${name}\n**E-posta:** ${email}\n**Mesaj:** ${message}`
+    };
+
+    fetch(webhookURL, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(payload)
+    })
+    .then(response => {
+        if (response.ok) {
+            document.getElementById('responseMessage').innerText = 'Mesajınız başarıyla gönderildi!';
+        } else {
+            throw new Error('Mesaj gönderilirken bir hata oluştu.');
+        }
+    })
+    .catch(error => {
+        document.getElementById('responseMessage').innerText = error.message;
+    });
+});
